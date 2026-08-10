@@ -1,0 +1,10 @@
+# Biconditional bonus: A + B <=> D
+# Forward: A and B true => D true.
+# Backward: D true (declared as initial fact here) => A and B undetermined.
+
+A | B <=> D
+D <=> E
+
+=E
+
+?ABD

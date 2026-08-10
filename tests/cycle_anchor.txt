@@ -1,0 +1,11 @@
+# Cycle + cache/taint test case.
+# A and B depend on each other in a loop; C anchors A from outside the loop.
+# Expected: A = True, B = True (not Undetermined, despite the A<->B cycle).
+
+A => B
+B => A
+C => A
+
+=C
+
+?AB

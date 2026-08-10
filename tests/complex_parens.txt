@@ -1,0 +1,11 @@
+# Nested parentheses and mixed operators, consistent (no contradiction).
+# A=True, B=False, C=True, D=False.
+# E <= (A + B) | (C ^ D)  -->  (T+F)|(T^F) = F|T = True
+# F <= !(A | B) + C       -->  !(T|F) + T = F + T = False (rule never fires)
+
+(A + B) | (C ^ D) => E
+!(A | B) + C => F
+
+=AC
+
+?EF

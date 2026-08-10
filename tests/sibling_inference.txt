@@ -1,0 +1,27 @@
+# Regression test: an OR/XOR/AND conclusion is only genuinely ambiguous
+# when NEITHER side is independently pinned down. If the *other* operand's
+# value is already known (from elsewhere in the ruleset), plain boolean
+# algebra can still determine the target -- this must not be treated as
+# ambiguous just because the connective is OR/XOR/AND.
+
+# XOR: D <=> E anchors D=True; A^B <=> D reversed gives A^B=True. A is an
+# initial fact (True), independent of B, so B is forced False.
+#   Expected: B = False   (not Undetermined: A^B=True with A=True forces B=False)
+D <=> E
+A ^ B <=> D
+
+# OR: X => !Z anchors Z=False, independent of Y. P => Y|Z fires (P true);
+# since Z is independently False, Y must be True (the only way Y|Z holds).
+#   Expected: Z = False, Y = True
+X => !Z
+P => Y | Z
+
+# AND (via NOT): Q => !(R + S) fires; !(R+S) means R+S is False. R is
+# independently True (initial), so S must be False (the only way an AND
+# with a True operand can be False).
+#   Expected: S = False
+Q => !(R + S)
+
+=AEXPQR
+
+?B Y Z S

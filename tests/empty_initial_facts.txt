@@ -1,0 +1,8 @@
+# A lone "=" with nothing after it: valid syntax, no facts are initially true.
+# Expected: A=False, B=False (A is never asserted, so A=>B never fires).
+
+A => B
+
+=
+
+?AB

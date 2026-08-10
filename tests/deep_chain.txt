@@ -1,0 +1,12 @@
+# Long transitive chain, to exercise deep backward-chaining recursion.
+# Expected: F=True.
+
+A => B
+B => C
+C => D
+D => E
+E => F
+
+=A
+
+?F

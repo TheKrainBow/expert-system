@@ -1,0 +1,14 @@
+# AND/OR/XOR/NOT combined with parentheses.
+# A=true, B=false (never asserted, no rule concludes it), C=true.
+# Expected: D=True (A + !B fires), F=True (!(A+B) fires), E=False (no rule
+# for E ever fires: A+B is false, and F^C is false since both are True).
+
+A + !B => D
+(C ^ A) => D
+A + B => E
+!(A + B) => F
+F ^ C => E
+
+=AC
+
+?DEF

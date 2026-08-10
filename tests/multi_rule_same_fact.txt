@@ -1,0 +1,14 @@
+# Several rules concluding the same fact.
+# Case 1: C, one True vote (A=>C) and one False vote from an unrelated,
+# non-firing rule (D=>!C, D is false) -> no contradiction, C=True.
+# Case 2: E, a True vote and a False vote both actually firing -> contradiction.
+
+A => C
+D => !C
+
+A => E
+B => !E
+
+=AB
+
+?CE

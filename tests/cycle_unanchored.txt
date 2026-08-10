@@ -1,0 +1,11 @@
+# Pure, unanchored cycle: nothing outside {A, B} ever proves either one true.
+# Neither rule ever fires (each needs the other's assumed value first), so
+# both stay at the ordinary default: False.
+# Expected: A = False, B = False.
+
+A => B
+B => A
+
+=
+
+?AB

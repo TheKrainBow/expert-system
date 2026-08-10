@@ -1,0 +1,12 @@
+# OR/XOR in conclusion bonus.
+# A => B | C   : B true forces the OR true, but with no further info B and C
+#                are each individually Undetermined (correct ambiguity, not
+#                a contradiction).
+# D => B ^ E   : same idea for XOR.
+
+A => B | C
+D => B ^ E
+
+=AD
+
+?BCE

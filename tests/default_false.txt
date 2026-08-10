@@ -1,0 +1,10 @@
+# Facts with no rule and no initial-fact mention default to False.
+# Expected: B=True (A fires the rule), Z=False (never mentioned anywhere).
+
+B => !A
+B => A
+A => B
+
+=DA
+
+?ABZ

@@ -1,0 +1,13 @@
+# Multiple independent rules agreeing on the same fact (a "diamond" in the
+# dependency graph) -- consistent votes, no contradiction.
+# A third rule for D exists but never fires (C is false), demonstrating that
+# a non-firing rule contributes no vote and cannot cause a false contradiction.
+# Expected: D=True.
+
+A => D
+B => D
+C => !D
+
+=AB
+
+?D

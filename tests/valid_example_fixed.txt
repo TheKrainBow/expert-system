@@ -1,0 +1,33 @@
+# A corrected, fully-consistent version of the subject's appendix example
+# (the original mixes "A+B<=>C" with "A+B<=>!C", which is a genuine
+# contradiction on C -- see tests/example_input.txt). This version keeps
+# every construct from the subject (AND/OR/XOR/NOT/parens/<=>/OR+XOR in
+# conclusion) but drops the contradictory second biconditional so it can be
+# fully evaluated end to end.
+#
+# Facts: A=T, B=T, G=T (initial), everything else starts False.
+#
+# Expected:
+#   C=True  (A|B => C)
+#   E=True  (C => E)
+#   D=True  (A+B+C => D)
+#   F=False (A+!B => F never fires, B is True)
+#   H=True  (C|!G => H, C is True)
+#   Y=True, Z=True (A+B => Y+Z)
+#   V=Undetermined (only vote is the ambiguous "C|D => X|V")
+#   X=Undetermined (V^W is Undetermined since V is; C|D=>X|V is ambiguous too)
+
+C => E # C implies E
+A + B + C => D # A and B and C implies D
+A | B => C # A or B implies C
+A + !B => F # A and not B implies F
+C | !G => H # C or not G implies H
+V ^ W => X # V xor W implies X
+A + B => Y + Z # A and B implies Y and Z
+C | D => X | V # C or D implies X or V
+E + F => !V # E and F implies not V
+A + B <=> C # A and B if and only if C
+
+=ABG
+
+?GVXCDEFHYZ

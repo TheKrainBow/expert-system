@@ -1,0 +1,9 @@
+# Straightforward contradiction: A is declared true initially, but B => !A
+# and B is also true, forcing A false with no cycle involved.
+# Expected: an explicit contradiction error on the A query.
+
+B => !A
+
+=AB
+
+?A
